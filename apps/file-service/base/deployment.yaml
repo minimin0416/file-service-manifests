@@ -65,26 +65,3 @@ spec:
       volumes:
         - name: data
           emptyDir: {}
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: http
-            periodSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: http
-            periodSeconds: 10
-            failureThreshold: 3
-          resources:
-            requests:
-              cpu: 250m
-              memory: 512Mi
-            limits:
-              memory: 768Mi
-          volumeMounts:
-            - name: data
-              mountPath: /app/data
-      volumes:
-        - name: data
-          emptyDir: {}
